@@ -1,0 +1,9 @@
+*{
+    margin: 0 auto;
+    padding: 0;
+}
+.grafico{
+    width: 100px;
+    height: 100px;
+    padding: 40px;
+}
