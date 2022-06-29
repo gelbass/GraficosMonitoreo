@@ -1,3 +1,80 @@
+// MAPA DINAMICO INDEX
+google.charts.load('current', {
+    'packages': ['geochart'],
+    // Note: Because markers require geocoding, you'll need a mapsApiKey.
+    // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+    'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+});
+google.charts.setOnLoadCallback(drawMarkersMap);
+
+function drawMarkersMap() {
+    var data = google.visualization.arrayToDataTable([
+        ['City','dat0'],
+        ['Panama city',1],
+        ['Mexico',2],
+        ['Colón',2],
+    ]);
+
+    var options = {
+        backgroundColor: '#92b9e0',
+        defaultColor: '#a5a5a5',
+        region: '013',
+        displayMode: 'markers',
+        colorAxis: {
+            colors: ['green']
+        },
+        // datalessRegionColor: '#f8bbd0'
+    };
+
+    var chart = new google.visualization.GeoChart(document.getElementById('chart_map'));
+    chart.draw(data, options);
+};
+
+// Tacometros
+google.charts.load('current', {
+    'packages': ['gauge']
+});
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+
+    var data = google.visualization.arrayToDataTable([
+        ['Label', 'Value'],
+        ['Face U', 2],
+        ['Face V', 10],
+        ['Face W', 15]
+    ]);
+
+    var options = {
+        greenFrom: 0,
+        greenTo: 10,
+        yellowFrom: 10,
+        yellowTo: 15,
+        redFrom: 15,
+        redTo: 20,
+        minorTicks: 1,
+        majorTicks: 20,
+        max: 20
+    };
+
+    var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+
+    chart.draw(data, options);
+
+    setInterval(function () {
+        data.setValue(10);
+        chart.draw(data, options);
+    }, 13000);
+    setInterval(function () {
+        data.setValue(5);
+        chart.draw(data, options);
+    }, 5000);
+    setInterval(function () {
+        data.setValue(20);
+        chart.draw(data, options);
+    }, 26000);
+}
+// Chart.js
 const labels = [
     'January',
     'February',
@@ -6,9 +83,9 @@ const labels = [
 ];
 
 const labels1 = ['primero', 'segundo', 'tercero'];
-const labelsU = ['Face U'];
-const labelsV = ['Face V'];
-const labelsW = ['Face W'];
+const labelsU = ['Fase U'];
+const labelsV = ['Fase V'];
+const labelsW = ['Fase W'];
 
 
 const data = {
@@ -44,7 +121,7 @@ const data1 = {
         borderWidth: 2
     }]
 };
-const dataFaceU = {
+const dataFaseU = {
     labels: labelsU,
     datasets: [{
         backgroundColor: ['rgb(22,123, 2)',
@@ -55,7 +132,7 @@ const dataFaceU = {
     }]
 };
 
-const dataFaceV = {
+const dataFaseV = {
     labels: labelsV,
     datasets: [{
         backgroundColor: ['rgb(22,123, 2)',
@@ -65,7 +142,7 @@ const dataFaceV = {
         data: [30, 400]
     }]
 };
-const dataFaceW = {
+const dataFaseW = {
     labels: labelsW,
     datasets: [{
         backgroundColor: ['rgb(22,123, 2)',
@@ -115,9 +192,9 @@ const config1 = {
         responsive: true
     },
 };
-const configFaceU = {
+const configFaseU = {
     type: 'doughnut',
-    data: dataFaceU,
+    data: dataFaseU,
     options: {
         responsive: true,
         parsing: {
@@ -128,9 +205,9 @@ const configFaceU = {
         }
     }
 };
-const configFaceV = {
+const configFaseV = {
     type: 'doughnut',
-    data: dataFaceV,
+    data: dataFaseV,
     options: {
         responsive: true,
         parsing: {
@@ -141,9 +218,9 @@ const configFaceV = {
         }
     }
 };
-const configFaceW = {
+const configFaseW = {
     type: 'doughnut',
-    data: dataFaceW,
+    data: dataFaseW,
     options: {
         responsive: true,
         parsing: {
@@ -180,7 +257,7 @@ const configMix = {
         }
     }
 }
-const generalTriface = {
+const generalTriFase = {
     type: 'line',
     data: {
         datasets: [{
@@ -216,18 +293,18 @@ const generalTriface = {
     }
 }
 
-const ctx1 = document.getElementById('triface');
+const ctx1 = document.getElementById('trifase');
 const mixedChart = new Chart(ctx1, configMix);
 
-const trifaceU = document.getElementById('faceU');
-const trifaceUChart = new Chart(trifaceU, configFaceU);
-const trifaceV = document.getElementById('faceV');
-const trifaceChart = new Chart(trifaceV, configFaceV);
-const trifaceW = document.getElementById('faceW');
-const trifaceWChart = new Chart(trifaceW, configFaceW);
+/* const triFaseU = document.getElementById('faseU');
+const triFaseUChart = new Chart(triFaseU, configFaseU);
+const triFaseV = document.getElementById('faseV');
+const triFaseChart = new Chart(triFaseV, configFaseV);
+const triFaseW = document.getElementById('faseW');
+const triFaseWChart = new Chart(triFaseW, configFaseW); */
 
-const gt = document.getElementById('generalTriface');
-const generalTrifaceChart = new Chart(gt, generalTriface);
+const gt = document.getElementById('generalTrifase');
+const generalTriFaseChart = new Chart(gt, generalTriFase);
 
 const ctx2 = document.getElementById('lineas1');
 const myChart2 = new Chart(ctx2, config);

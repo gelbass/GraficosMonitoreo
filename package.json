@@ -1,5 +1,9 @@
 {
   "dependencies": {
-    "chart.js": "^3.8.0"
+    "chart.js": "^3.8.0",
+    "jquery-mapael": "^2.2.0"
+  },
+  "devDependencies": {
+    "google-charts": "^2.0.0"
   }
 }

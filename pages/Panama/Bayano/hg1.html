@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="../../../js/c3-0.7.20/c3.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../../css/styles.css">
     <title>Sistema de monitoreo</title>
 </head>
@@ -96,51 +97,56 @@
     <main>
         <div class="container-fluid container__breadcrumb">
             <div class="row">
-            <div class="col">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb p-2 ">
-                        <li class="breadcrumb-item"><a href="../../../index.html">Home</a></li>
-                        <li class="breadcrumb-item"><a href="../../panama.html">Panama</a></li>
-                        <li class="breadcrumb-item"><a href="#">Bayano</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">HG 1</li>
-                    </ol>
-                </nav>
-            </div>
-            <div class="col">
-                <div class="d-flex align-items-center flex-row-reverse">
-                    <h5 class="update">Ultima actualizacion: 23/06/2022 14:50hs</h5>
+                <div class="col">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb p-2 ">
+                            <li class="breadcrumb-item"><a href="../../../index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a href="../../panama.html">Panama</a></li>
+                            <li class="breadcrumb-item"><a href="#">Bayano</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">HG 1</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="col">
+                    <div class="d-flex align-items-center flex-row-reverse">
+                        <h5 class="update">Ultima actualizacion: 23/06/2022 14:50hs</h5>
+                    </div>
                 </div>
             </div>
         </div>
-        </div>
-        
+
 
         <div class="container__text">
             <h2>Central Bayano</h2>
             <h3>Unidad HG 1</h3>
         </div>
-        <!-- TRIFACE -->
+        <!-- TRIFASE -->
         <div class="container__grafic">
             <div class="container__text">
                 <h5>Descargas Parciales</h5>
             </div>
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-8 d-flex align-items-center">
-                        <div class="col">
-                            <canvas id="faceU"></canvas>
-                        </div>
-                        <div class="col">
-                            <canvas id="faceV"></canvas>
-                        </div>
-                        <div class="col">
-                            <canvas id="faceW"></canvas>
-                        </div>
+                    <div class="col-6 d-flex align-items-center justify-content-center">
+                        <div class="tacometro" id="chart_div"></div>
                     </div>
-                    <div class="col-4 d-flex align-items-center">
-                        <canvas id="generalTriface"></canvas>
+                    <div class="col-6 d-flex align-items-center justify-content-center">
+                        <canvas id="generalTrifase"></canvas>
                     </div>
                 </div>
+
+                <!-- <div class="row">
+                    <div class="col">
+                        <canvas id="faseU"></canvas>
+                    </div>
+                    <div class="col">
+                        <canvas id="faseV"></canvas>
+                    </div>
+                    <div class="col">
+                        <canvas id="faseW"></canvas>
+                    </div>
+                </div> -->
+
             </div>
         </div>
         <div class="container">
@@ -170,6 +176,8 @@
     </footer>
     <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../../../js/c3-0.7.20/c3.js" charset="utf-8"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="../../../js/graficos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
         integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous">
