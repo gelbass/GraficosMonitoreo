@@ -1,18 +1,18 @@
 // MAPA DINAMICO INDEX
-google.charts.load('current', {
+google.charts.load({
     'packages': ['geochart'],
     // Note: Because markers require geocoding, you'll need a mapsApiKey.
     // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
-    'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+    // 'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
 });
-google.charts.setOnLoadCallback(drawMarkersMap);
+google.charts.setOnLoadCallback(drawRegionsMap);
 
-function drawMarkersMap() {
+function drawRegionsMap() {
     var data = google.visualization.arrayToDataTable([
-        ['City','dat0'],
-        ['Panama city',1],
-        ['Mexico',2],
-        ['Colón',2],
+        ['City', 'dat0'],
+        ['Panama city', 1],
+        ['Mexico', 2],
+        ['Colón', 10],
     ]);
 
     var options = {
@@ -21,7 +21,7 @@ function drawMarkersMap() {
         region: '013',
         displayMode: 'markers',
         colorAxis: {
-            colors: ['green']
+            colors: ['green', 'blue']
         },
         // datalessRegionColor: '#f8bbd0'
     };
@@ -62,15 +62,15 @@ function drawChart() {
     chart.draw(data, options);
 
     setInterval(function () {
-        data.setValue(10);
+        data.setValue(0, 1, 10 + Math.round(10 * Math.random()));
         chart.draw(data, options);
     }, 13000);
     setInterval(function () {
-        data.setValue(5);
+        data.setValue(1, 1, 10 + Math.round(10 * Math.random()));
         chart.draw(data, options);
     }, 5000);
     setInterval(function () {
-        data.setValue(20);
+        data.setValue(2, 1, 10 + Math.round(10 * Math.random()));
         chart.draw(data, options);
     }, 26000);
 }

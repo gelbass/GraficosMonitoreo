@@ -1,7 +1,8 @@
 {
   "dependencies": {
     "chart.js": "^3.8.0",
-    "jquery-mapael": "^2.2.0"
+    "jquery-mapael": "^2.2.0",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "google-charts": "^2.0.0"
